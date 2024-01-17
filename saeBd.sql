@@ -254,39 +254,39 @@ INSERT INTO gaumont.societeProduction (societeProductionid, nom) VALUES
 (15, 'Legendary Entertainment');
 
 
-INSERT INTO gaumont.films (idfilm, nom, societeProductionid) VALUES
-(1, 'Inception', 1),
-(2, 'Jurassic Park', 2),
-(3, 'Forrest Gump', 3),
-(4, 'Titanic', 4),
-(5, 'The Lion King', 5),
-(6, 'Spider-Man: Into the Spider-Verse', 6),
-(7, 'The Wizard of Oz', 7),
-(8, 'Saving Private Ryan', 8),
-(9, 'The Hunger Games', 9),
-(10, 'Men in Black', 10),
-(11, 'Pulp Fiction', 11),
-(12, 'The Lord of the Rings: The Fellowship of the Ring', 12),
-(13, 'La La Land', 13),
-(14, 'Spirited Away', 14),
-(15, 'The Dark Knight', 1);
+INSERT INTO gaumont.films (idfilm, nom, dateDebutDiff, dateFinDiff, societeProductionid) VALUES
+(1, 'Inception', '2023-01-01', '2028-01-01', 1),--
+(2, 'Jurassic Park', '2024-02-05', '2024-02-19', 2),--
+(3, 'Forrest Gump', '2024-02-10', '2024-02-24', 3),--
+(4, 'Titanic', '2024-02-15', '2024-02-29', 4),--
+(5, 'The Lion King', '2024-02-20', '2024-03-05', 5),--
+(6, 'Spider-Man: Into the Spider-Verse', '2024-02-25', '2024-03-26', 6), --
+(7, 'The Wizard of Oz', '2024-03-01', '2024-03-16', 7),--
+(8, 'Saving Private Ryan', '2024-03-05', '2024-03-20', 8),--
+(9, 'The Hunger Games', '2024-03-10', '2024-03-25', 9),--
+(10, 'Men in Black', '2024-03-15', '2024-04-17', 10),--
+(11, 'Pulp Fiction', '2024-03-20', '2024-04-12', 11),--
+(12, 'The Lord of the Rings: The Fellowship of the Ring', '2024-03-25', '2024-04-10', 12),--
+(13, 'La La Land', '2024-03-30', '2024-04-22', 13),--
+(14, 'Spirited Away', '2024-04-04', '2024-05-23', 14),
+(15, 'The Dark Knight', '2024-04-09', '2024-04-27', 1);
 
 
 INSERT INTO gaumont.seance (idfilm, idSalles, idPersonne, dateSeance) VALUES
-(1, 101, 1, '2024-02-01'),
-(2, 201, 1, '2024-02-05'),
-(3, 301, 3, '2024-02-10'),
-(4, 401, 8, '2024-02-15'),
-(5, 501, 14, '2024-02-20'),
-(6, 601, 2, '2024-02-25'),
-(7, 401, 9, '2024-03-01'),
-(8, 602, 4, '2024-03-05'),
-(9, 601, 7, '2024-03-10'),
-(10, 101, 7, '2024-03-15'),
-(11, 201, 5, '2024-03-20'),
-(12, 301, 6, '2024-03-25'),
-(13, 401, 6, '2024-03-30'),
-(14, 501, 12, '2024-04-04'),
+(1, 101, 1, '2024-02-01'),--
+(2, 201, 1, '2024-02-05'),--
+(3, 301, 3, '2024-02-10'),--
+(4, 401, 8, '2024-02-15'),--
+(5, 501, 14, '2024-02-20'),--
+(6, 601, 2, '2024-02-25'),--
+(7, 401, 9, '2024-03-01'),--
+(8, 602, 4, '2024-03-05'),--
+(9, 601, 7, '2024-03-10'),--
+(10, 101, 7, '2024-03-15'),--
+(11, 201, 5, '2024-03-20'),--
+(12, 301, 6, '2024-03-25'),--
+(13, 401, 6, '2024-03-30'),--
+(14, 501, 12, '2024-04-04'),--
 (15, 601, 13, '2024-04-09');
 
 
