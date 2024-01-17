@@ -101,6 +101,8 @@ CREATE TABLE gaumont.societeProduction(
 CREATE TABLE gaumont.films(
 	idfilm                SERIAL NOT NULL ,
 	nom                   VARCHAR  NOT NULL ,
+	dateDebutDiff         DATE NOT NULL  ,
+	dateFinDiff           DATE NOT NULL  ,
 	societeProductionid   INT  NOT NULL  ,
 	CONSTRAINT films_PK PRIMARY KEY (idfilm)
 
