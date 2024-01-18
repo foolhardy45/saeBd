@@ -291,32 +291,35 @@ INSERT INTO gaumont.seance (idfilm, idSalles, idPersonne, dateSeance) VALUES
 
 
 -- 1. Retrouver les noms des films, le nom du studio de production, et la date de séance pour toutes les séances.
-/*SELECT f.nom AS "Nom du Film", sp.nom AS "Studio de Production", s.dateSeance
-FROM gaumont.seance s
-JOIN gaumont.films f ON s.idfilm = f.idfilm
-JOIN gaumont.societeProduction sp ON f.societeProductionid = sp.societeProductionid;
+/*SELECT client.nom AS "Nom du Client", client.prenom AS "Prénom du Client", films.nom AS "Nom du Film", seance.dateSeance AS "Date de la scéance"
+FROM gaumont.seance
+JOIN gaumont.client ON seance.idPersonne = client.idPersonne
+JOIN gaumont.films ON seance.idfilm = films.idfilm;
 
 -- 2. Retrouver les noms des clients, le nom de la salle, et la date de séance pour toutes les réservations.
-SELECT c.nom AS "Nom du Client", c.prenom AS "Prénom du Client", sa.nom AS "Nom de la Salle", s.dateSeance
-FROM gaumont.seance s
-JOIN gaumont.client c ON s.idPersonne = c.idPersonne
-JOIN gaumont.salles sa ON s.idSalles = sa.idSalles;
+SELECT films.nom AS "Nom du Film", societeProduction.nom AS "Studio de Production", seance.dateSeance AS "Date de la scéance"
+FROM gaumont.seance
+INNER JOIN gaumont.films ON seance.idfilm = films.idfilm
+INNER JOIN gaumont.societeProduction ON films.societeProductionid = societeProduction.societeProductionid;
 
 -- 3. Retrouver le nombre de séances par salle.
-SELECT sa.nom AS "Nom de la Salle", COUNT(*) AS "Nombre de Séances"
-FROM gaumont.seance s
-JOIN gaumont.salles sa ON s.idSalles = sa.idSalles
-GROUP BY sa.nom;
+SELECT salles.idsalles AS "Nom de la Salle", COUNT(*) AS "Nombre de Séances"
+FROM gaumont.seance
+INNER JOIN gaumont.salles ON seance.idSalles = salles.idSalles
+GROUP BY salles.idsalles;
 
 -- 4. Retrouver le nombre de films produits par chaque studio de production.
-SELECT sp.nom AS "Studio de Production", COUNT(*) AS "Nombre de Films"
-FROM gaumont.films f
-JOIN gaumont.societeProduction sp ON f.societeProductionid = sp.societeProductionid
-GROUP BY sp.nom;
+SELECT societeProduction.nom AS "Studio de Production", COUNT(*) AS "Nombre de Films"
+FROM gaumont.films
+INNER JOIN gaumont.societeProduction ON films.societeProductionid = societeProduction.societeProductionid
+GROUP BY societeProduction.nom;
 
 -- 5. Retrouver les noms des personnes qui sont à la fois employées et clientes.
-SELECT p.nom, p.prenom
-FROM gaumont.personne p
-JOIN gaumont.employe e ON p.idPersonne = e.idPersonne
-JOIN gaumont.client c ON p.idPersonne = c.idPersonne;
+SELECT personne.nom AS "Nom", personne.prenom AS "Prénom"
+FROM gaumont.personne
+INNER JOIN gaumont.employe ON personne.idPersonne = employe.idPersonne
+INTERSECT
+SELECT personne.nom, personne.prenom
+FROM gaumont.personne
+INNER JOIN gaumont.client ON personne.idPersonne = client.idPersonne;
 */
