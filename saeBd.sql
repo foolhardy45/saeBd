@@ -289,33 +289,31 @@ INSERT INTO gaumont.seance (idfilm, idSalles, idPersonne, dateSeance) VALUES
 (14, 501, 12, '2024-04-04'),--
 (15, 601, 13, '2024-04-09');
 
-
--- 1. Retrouver les noms des films, le nom du studio de production, et la date de séance pour toutes les séances.
 /*
-SELECT films.nom AS "Nom du Film", societeProduction.nom AS "Studio de Production", seance.dateSeance AS "Date de la scéance"
-FROM gaumont.seance
-INNER JOIN gaumont.films ON seance.idfilm = films.idfilm
-INNER JOIN gaumont.societeProduction ON films.societeProductionid = societeProduction.societeProductionid;
-
--- 2. Retrouver les noms des clients, le nom de la salle, et la date de séance pour toutes les réservations.
 SELECT client.nom AS "Nom du Client", client.prenom AS "Prénom du Client", films.nom AS "Nom du Film", seance.dateSeance AS "Date de la scéance"
 FROM gaumont.seance
 JOIN gaumont.client ON seance.idPersonne = client.idPersonne
 JOIN gaumont.films ON seance.idfilm = films.idfilm;
+Cette Requete affiche le nom et le prénom du client, le nom du film et la date de la séance pour chaque enregistrement correspondant dans les tables seance, client, et films.
 
--- 3. Retrouver le nombre de séances par salle.
+SELECT films.nom AS "Nom du Film", societeProduction.nom AS "Studio de Production", seance.dateSeance AS "Date de la scéance"
+FROM gaumont.seance
+INNER JOIN gaumont.films ON seance.idfilm = films.idfilm
+INNER JOIN gaumont.societeProduction ON films.societeProductionid = societeProduction.societeProductionid;
+Cette requete affiche le nom du film, le nom du studio de production et la date de la séance pour chaque enregistrement correspondant dans les tables seance, films, et societeProduction.
+
 SELECT salles.idsalles AS "Nom de la Salle", COUNT(*) AS "Nombre de Séances"
 FROM gaumont.seance
 INNER JOIN gaumont.salles ON seance.idSalles = salles.idSalles
 GROUP BY salles.idsalles;
+Cette requete affiche le nom de la salle et le nombre de séances pour chaque salle, en utilisant une agrégation (COUNT) sur les enregistrements correspondants dans les tables seance et salles.
 
--- 4. Retrouver le nombre de films produits par chaque studio de production.
 SELECT societeProduction.nom AS "Studio de Production", COUNT(*) AS "Nombre de Films"
 FROM gaumont.films
 INNER JOIN gaumont.societeProduction ON films.societeProductionid = societeProduction.societeProductionid
 GROUP BY societeProduction.nom;
+Cette requete affiche le nom du studio de production et le nombre de films pour chaque studio, en utilisant une agrégation (COUNT) sur les enregistrements correspondants dans les tables films et societeProduction.
 
--- 5. Retrouver les noms des personnes qui sont à la fois employées et clientes.
 SELECT personne.nom AS "Nom", personne.prenom AS "Prénom"
 FROM gaumont.personne
 INNER JOIN gaumont.employe ON personne.idPersonne = employe.idPersonne
@@ -323,4 +321,5 @@ INTERSECT
 SELECT personne.nom, personne.prenom
 FROM gaumont.personne
 INNER JOIN gaumont.client ON personne.idPersonne = client.idPersonne;
+Cette requête sélectionne les noms et prénoms des individus qui occupent à la fois le rôle d'employé et de client. Elle utilise l'opérateur INTERSECT pour identifier les enregistrements partagés entre les résultats de deux sous-requêtes distinctes. La première sous-requête extrait les personnes de la table des employés, tandis que la deuxième sous-requête récupère les personnes de la table des clients. Ainsi, l'intersection des deux ensembles de résultats donne les personnes qui sont à la fois employées et clientes.
 */
