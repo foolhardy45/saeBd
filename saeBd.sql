@@ -291,16 +291,17 @@ INSERT INTO gaumont.seance (idfilm, idSalles, idPersonne, dateSeance) VALUES
 
 
 -- 1. Retrouver les noms des films, le nom du studio de production, et la date de séance pour toutes les séances.
-/*SELECT client.nom AS "Nom du Client", client.prenom AS "Prénom du Client", films.nom AS "Nom du Film", seance.dateSeance AS "Date de la scéance"
-FROM gaumont.seance
-JOIN gaumont.client ON seance.idPersonne = client.idPersonne
-JOIN gaumont.films ON seance.idfilm = films.idfilm;
-
--- 2. Retrouver les noms des clients, le nom de la salle, et la date de séance pour toutes les réservations.
+/*
 SELECT films.nom AS "Nom du Film", societeProduction.nom AS "Studio de Production", seance.dateSeance AS "Date de la scéance"
 FROM gaumont.seance
 INNER JOIN gaumont.films ON seance.idfilm = films.idfilm
 INNER JOIN gaumont.societeProduction ON films.societeProductionid = societeProduction.societeProductionid;
+
+-- 2. Retrouver les noms des clients, le nom de la salle, et la date de séance pour toutes les réservations.
+SELECT client.nom AS "Nom du Client", client.prenom AS "Prénom du Client", films.nom AS "Nom du Film", seance.dateSeance AS "Date de la scéance"
+FROM gaumont.seance
+JOIN gaumont.client ON seance.idPersonne = client.idPersonne
+JOIN gaumont.films ON seance.idfilm = films.idfilm;
 
 -- 3. Retrouver le nombre de séances par salle.
 SELECT salles.idsalles AS "Nom de la Salle", COUNT(*) AS "Nombre de Séances"
